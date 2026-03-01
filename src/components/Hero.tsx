@@ -29,12 +29,12 @@ export default function Hero() {
       <div className="max-w-4xl mx-auto px-6 text-center z-10 flex flex-col items-center">
         
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-blue-500/10 border border-slate-200 dark:border-blue-500/20 shadow-sm mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 shadow-sm mb-8">
           <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 dark:bg-blue-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500 dark:bg-blue-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
           </span>
-          <span className="text-xs font-semibold text-slate-700 dark:text-blue-500 uppercase tracking-wide">Disponível para projetos</span>
+          <span className="text-xs font-semibold text-blue-600 dark:text-blue-500 uppercase tracking-wide">Disponível para projetos</span>
         </div>
 
         {/* Title */}
@@ -44,8 +44,10 @@ export default function Hero() {
 
         {/* Typewriter Subtitle */}
         <div className="h-10 mb-6">
-          <p className="text-xl md:text-3xl font-mono text-blue-500 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-pink-500 dark:to-blue-500 font-bold">
-            &gt; {currentRole}<span className="animate-pulse dark:text-blue-500">_</span>
+          <p className="text-xl md:text-3xl font-mono font-bold">
+            <span className="text-blue-500">&gt; </span>
+            <span className="text-transparent bg-clip-text bg-rainbow animate-gradient">{currentRole}</span>
+            <span className="animate-pulse text-blue-500">_</span>
           </p>
         </div>
         

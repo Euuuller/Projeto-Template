@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Sun, Moon, FileDown, Github, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -18,14 +18,6 @@ export default function Navbar() {
     setIsDarkMode(!isDarkMode);
     document.documentElement.classList.toggle('dark');
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,11 +47,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-[1000] transition-all duration-500 ease-in-out ${
-      isScrolled 
-        ? 'bg-white/80 dark:bg-[#050505]/80 backdrop-blur-lg border-b border-slate-200/60 dark:border-slate-800/60 shadow-[0_4px_30px_rgba(0,0,0,0.03)] py-3' 
-        : 'bg-transparent py-6'
-    }`}>
+    <nav className="fixed top-0 w-full z-[1000] bg-white/90 dark:bg-[#050505]/90 backdrop-blur-md border-b border-slate-200/60 dark:border-slate-800/60 shadow-sm py-4">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="#inicio" className="text-xl font-extrabold tracking-tighter text-navy dark:text-white flex items-center gap-1">
           <span className="text-blue-500 bg-blue-50 dark:bg-blue-500/10 px-1.5 py-0.5 rounded-md text-lg">&lt;/&gt;</span> E.D
@@ -88,26 +76,34 @@ export default function Navbar() {
           <div className="flex items-center gap-3 border-l border-slate-200 dark:border-slate-800 pl-8">
             <button 
               onClick={toggleTheme}
-              className="w-9 h-9 rounded-full border border-transparent dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-blue-500 dark:hover:text-white dark:hover:bg-slate-800 transition-all"
+              className="group w-9 h-9 rounded-full flex items-center justify-center bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:bg-blue-500/10 dark:text-blue-400 dark:hover:bg-blue-500/20 dark:hover:text-blue-300 transition-all"
               title={isDarkMode ? "Mudar para Modo Claro" : "Mudar para Modo Escuro"}
             >
-              <i className={`fa-solid ${isDarkMode ? 'fa-sun' : 'fa-moon'}`}></i>
+              {isDarkMode ? (
+                <Sun className="w-5 h-5 transition-transform duration-500 group-hover:rotate-90 group-hover:scale-110" />
+              ) : (
+                <Moon className="w-5 h-5 transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-110" />
+              )}
             </button>
-            <a href="#" className="w-9 h-9 rounded-full border border-transparent dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 dark:hover:bg-slate-800 transition-all" title="Baixar CV">
-              <i className="fa-solid fa-file-pdf"></i>
+            <a href="#" className="group w-9 h-9 rounded-full flex items-center justify-center bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:bg-blue-500/10 dark:text-blue-400 dark:hover:bg-blue-500/20 dark:hover:text-blue-300 transition-all" title="Baixar CV">
+              <FileDown className="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1 group-hover:scale-110" />
             </a>
-            <a href="https://github.com/euller-ds" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-transparent dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-navy dark:hover:text-white dark:hover:bg-slate-800 transition-all">
-              <i className="fa-brands fa-github"></i>
+            <a href="https://github.com/euller-ds" target="_blank" rel="noopener noreferrer" className="group w-9 h-9 rounded-full flex items-center justify-center bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:bg-blue-500/10 dark:text-blue-400 dark:hover:bg-blue-500/20 dark:hover:text-blue-300 transition-all">
+              <Github className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
             </a>
           </div>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden text-slate-600 dark:text-slate-300 text-2xl hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+          className="md:hidden w-10 h-10 rounded-full flex items-center justify-center bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:bg-blue-500/10 dark:text-blue-400 dark:hover:bg-blue-500/20 dark:hover:text-blue-300 transition-colors group"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <i className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars-staggered'}`}></i>
+          {mobileMenuOpen ? (
+            <X className="w-6 h-6 transition-transform duration-300 group-hover:rotate-90" />
+          ) : (
+            <Menu className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
+          )}
         </button>
       </div>
 
@@ -133,15 +129,20 @@ export default function Navbar() {
           <div className="flex items-center gap-4 pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 px-4">
             <button 
               onClick={() => { toggleTheme(); setMobileMenuOpen(false); }}
-              className="flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+              className="group flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
             >
-              <i className={`fa-solid ${isDarkMode ? 'fa-sun' : 'fa-moon'}`}></i> Tema
+              {isDarkMode ? (
+                <Sun className="w-4 h-4 transition-transform duration-500 group-hover:rotate-90" />
+              ) : (
+                <Moon className="w-4 h-4 transition-transform duration-500 group-hover:-rotate-12" />
+              )}
+              Tema
             </button>
-            <a href="#" className="flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors ml-auto">
-              <i className="fa-solid fa-file-pdf"></i> Currículo
+            <a href="#" className="group flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors ml-auto">
+              <FileDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" /> Currículo
             </a>
-            <a href="https://github.com/euller-ds" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-white transition-colors ml-auto">
-              <i className="fa-brands fa-github"></i> GitHub
+            <a href="https://github.com/euller-ds" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-white transition-colors ml-auto">
+              <Github className="w-4 h-4 transition-transform duration-300 group-hover:rotate-12" /> GitHub
             </a>
           </div>
         </div>

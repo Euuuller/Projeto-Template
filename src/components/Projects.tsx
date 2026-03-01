@@ -23,6 +23,21 @@ const getMetricIconColor = (index: number) => {
   return colors[index % colors.length];
 };
 
+const getMetricIcon = (metric: string) => {
+  const m = metric.toLowerCase();
+  if (m.includes('registro')) return 'fa-solid fa-database';
+  if (m.includes('segmento') || m.includes('perfi')) return 'fa-solid fa-users-viewfinder';
+  if (m.includes('roi')) return 'fa-solid fa-arrow-trend-up';
+  if (m.includes('python')) return 'fa-brands fa-python';
+  if (m.includes('kpi')) return 'fa-solid fa-chart-line';
+  if (m.includes('página')) return 'fa-solid fa-file-lines';
+  if (m.includes('dax')) return 'fa-solid fa-calculator';
+  if (m.includes('precisão') || m.includes('f1-score')) return 'fa-solid fa-bullseye';
+  if (m.includes('falso')) return 'fa-solid fa-shield-halved';
+  
+  return 'fa-solid fa-chart-simple';
+};
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
 
@@ -61,6 +76,11 @@ export default function Projects() {
             >
               <div className="relative h-[200px] overflow-hidden">
                 <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-navy/60 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                  <span className="bg-white/10 hover:bg-white/20 border border-white/30 text-white text-sm font-semibold py-2 px-4 rounded-lg backdrop-blur-md transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                    Ver Detalhes do Projeto
+                  </span>
+                </div>
                 <div className="absolute top-4 left-4">
                   <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${project.badgeColor}`}>
                     {project.category}
@@ -83,7 +103,7 @@ export default function Projects() {
                   <div className="flex justify-center gap-3">
                     {project.metrics.map((m, i) => (
                       <span key={i} className="text-xs font-mono font-medium text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
-                        <i className={`fa-solid fa-chart-simple ${getMetricIconColor(i)}`}></i> {m}
+                        <i className={`${getMetricIcon(m)} ${getMetricIconColor(i)}`}></i> {m}
                       </span>
                     ))}
                   </div>
@@ -182,8 +202,8 @@ export default function Projects() {
                   <h4 className="font-bold text-navy dark:text-white mb-3 uppercase text-[11px] tracking-wider text-slate-500 dark:text-slate-400">Métricas</h4>
                   <ul className="space-y-3">
                     {selectedProject.modal.metricas.map((m: string, i: number) => (
-                      <li key={i} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
-                        <div className={`w-1.5 h-1.5 rounded-full ${getMetricIconColor(i).replace('text-', 'bg-').replace('dark:text-', 'dark:bg-')}`}></div>
+                      <li key={i} className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                        <i className={`${getMetricIcon(m)} ${getMetricIconColor(i)}`}></i>
                         <span>{m}</span>
                       </li>
                     ))}

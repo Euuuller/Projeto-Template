@@ -14,7 +14,7 @@ export default function About() {
           <div className="relative mx-auto lg:mx-0 max-w-sm w-full">
             <div className="aspect-square rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-lg relative z-10">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" 
+                src="/profile.jpeg" 
                 alt="Euller Duarte" 
                 className="w-full h-full object-cover"
               />
@@ -34,10 +34,10 @@ export default function About() {
           <div className="flex flex-col items-center text-center">
             <div className="text-slate-600 dark:text-slate-300 text-base leading-relaxed space-y-4 mb-10 max-w-2xl">
               <p>
-                Sou graduando em <span className="text-blue-500 dark:text-blue-400 font-semibold">Engenharia Elétrica</span> pelo IFMA e um entusiasta apaixonado por <span className="text-purple-500 dark:text-purple-400 font-semibold">Análise de Dados</span>. Minha jornada combina o rigor analítico da engenharia com a criatividade necessária para extrair insights valiosos de conjuntos de dados complexos.
+                Graduando em <span className="text-blue-500 dark:text-blue-400 font-semibold">Engenharia Elétrica</span> pelo Instituto Federal do Maranhão (IFMA), com foco em <span className="text-blue-500 dark:text-blue-400 font-semibold">Análise de Dados</span>. Possuo experiência prática com <span className="text-green-600 dark:text-green-500 font-semibold">Excel</span>, <span className="text-yellow-500 dark:text-yellow-400 font-semibold">Power BI</span>, <span className="text-teal-600 dark:text-teal-400 font-semibold">SQL</span> e <span className="text-yellow-500 dark:text-yellow-400 font-semibold">Python</span>, aplicando conceitos de Estatística e os principais tipos de análise de dados Descritiva, Diagnóstica, Preditiva e Prescritiva para resolver problemas de negócio.
               </p>
               <p>
-                Tenho experiência prática na construção de dashboards interativos no <span className="text-yellow-500 dark:text-yellow-400 font-semibold">Power BI</span>, manipulação de dados com <span className="text-green-500 dark:text-green-400 font-semibold">Python</span> e <span className="text-green-600 dark:text-green-500 font-semibold">Excel</span>, e consultas eficientes usando <span className="text-blue-500 dark:text-blue-400 font-semibold">SQL</span>. Meu objetivo é ajudar empresas a tomarem decisões mais inteligentes e baseadas em dados.
+                Desenvolvi projetos completos utilizando dados públicos, incluindo segmentação de clientes (RFM), análise de retenção por cohort, diagnóstico de queda de vendas, criação de dashboards gerenciais e previsão do número de pedidos, transformando dados em tomada de decisão orientada a dados.
               </p>
             </div>
 

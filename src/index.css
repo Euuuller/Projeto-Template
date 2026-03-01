@@ -20,6 +20,31 @@
     mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
   }
+  
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: textGradient 4s linear infinite;
+  }
+  
+  .bg-rainbow {
+    background-image: linear-gradient(
+      to right,
+      #3b82f6,
+      #a855f7,
+      #ec4899,
+      #f97316,
+      #facc15,
+      #22c55e,
+      #06b6d4,
+      #3b82f6
+    );
+  }
+}
+
+@keyframes textGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes scrollLeft {
